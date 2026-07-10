@@ -1,0 +1,7 @@
+interface:
+  display_name: "KS Case Review"
+  short_description: "K 学姐咨询 Case 面试录音复盘工具"
+  default_prompt: "Use $ks-case-review to review this case interview transcript."
+
+policy:
+  allow_implicit_invocation: true

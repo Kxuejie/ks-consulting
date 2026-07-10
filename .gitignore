@@ -1,0 +1,11 @@
+# Local source file; the public package lives under skills/.
+/SKILL.md
+/agents/
+
+# Local agent and editor files.
+/.claude/
+/.codex/
+/.idea/
+/.vscode/
+Thumbs.db
+.DS_Store

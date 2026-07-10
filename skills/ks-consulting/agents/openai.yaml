@@ -1,0 +1,4 @@
+interface:
+  display_name: "KS Consulting"
+  short_description: "K 学姐咨询求职工具箱主入口，负责定位、简历与 Case 任务导航"
+  default_prompt: "Use $ks-consulting to route me to the right K 学姐 consulting career skill."
