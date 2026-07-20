@@ -12,75 +12,6 @@ KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成
 
 ---
 
-## About K 学姐
-
-K 学姐是 Ex-MBB 咨询顾问，长期分享战略咨询求职、Case 训练和商业思维内容。
-
-小红书：[K 学姐](https://xhslink.com/m/4evgCZqfNRR)
-全网同名「K 学姐」，可自行搜索。
-
----
-
-## 支持作者
-
-如果这套免费开源工具对你有帮助，也可以通过 K 学姐整理的付费资料与课程继续学习。购买不是使用本仓库的前提，仓库中的核心 Skills 仍然免费开源。
-
-<table>
-  <tr>
-    <th width="50%">咨询 Case 面试全攻略</th>
-    <th width="50%">战略咨询基本功课程</th>
-  </tr>
-  <tr>
-    <td align="center"><img src="assets/support/case-interview-guide-qr.png" width="220" alt="咨询 Case 面试全攻略商品二维码"></td>
-    <td align="center"><img src="assets/support/consulting-fundamentals-course-qr.png" width="220" alt="战略咨询基本功课程商品二维码"></td>
-  </tr>
-  <tr>
-    <td>面向准备咨询面试的同学，把分散的 Case 方法、常见题型和练习重点整理成一份可以反复查阅的系统攻略。</td>
-    <td>围绕战略咨询常用的结构化思考、问题拆解和表达方式，适合希望系统补齐咨询基本功、跟随课程练习的同学。</td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://xhslink.com/m/1j6S5TAIGI1"><strong>打开文档商品页</strong></a><br>微信扫码或点击链接</td>
-    <td align="center"><a href="https://xhslink.com/m/8jlzN1YYWrl"><strong>打开课程商品页</strong></a><br>微信扫码或点击链接</td>
-  </tr>
-</table>
-
----
-
-## 一键安装整套工具
-
-推荐使用开源的 [Agent Skills CLI](https://github.com/vercel-labs/skills)：
-
-```bash
-npx -y skills add Kxuejie/ks-consulting -g --all
-```
-
-这条命令会安装仓库中的 5 个 skill：1 个主入口和 4 个专业工具。
-
-只安装到指定 Agent：
-
-```bash
-# Codex
-npx -y skills add Kxuejie/ks-consulting -g -a codex -s '*' -y
-
-# Claude Code
-npx -y skills add Kxuejie/ks-consulting -g -a claude-code -s '*' -y
-```
-
-### 让 Agent 帮你安装
-
-如果你的 Agent 可以联网、运行终端命令并写入 skills 目录，可以把下面这段话直接发给它：
-
-```text
-请帮我安装 K 学姐咨询求职 skill 工具箱，并安装其中的全部 skills：
-https://github.com/Kxuejie/ks-consulting
-
-安装完成后，请告诉我识别到的 skill 名称和安装路径。
-```
-
-不同 Agent 的权限设置不同。如果它不能直接安装，请使用上面的 `npx` 命令，或手动下载仓库。
-
----
-
 ## 工具箱
 
 | Skill | 什么时候用 | 你会得到什么 |
@@ -122,6 +53,75 @@ Case Review：用实战文稿持续复盘面试表现
 ```
 
 主入口只负责分流，不会用一套简化流程替代专业工具。它会先识别你的当前瓶颈，再切换到对应 skill 完整执行。
+
+---
+
+## 一键安装整套工具
+
+推荐使用开源的 [Agent Skills CLI](https://github.com/vercel-labs/skills)：
+
+```bash
+npx -y skills add Kxuejie/ks-consulting -g --all
+```
+
+这条命令会安装仓库中的 5 个 skill：1 个主入口和 4 个专业工具。
+
+只安装到指定 Agent：
+
+```bash
+# Codex
+npx -y skills add Kxuejie/ks-consulting -g -a codex -s '*' -y
+
+# Claude Code
+npx -y skills add Kxuejie/ks-consulting -g -a claude-code -s '*' -y
+```
+
+### 让 Agent 帮你安装
+
+如果你的 Agent 可以联网、运行终端命令并写入 skills 目录，可以把下面这段话直接发给它：
+
+```text
+请帮我安装 K 学姐咨询求职 skill 工具箱，并安装其中的全部 skills：
+https://github.com/Kxuejie/ks-consulting
+
+安装完成后，请告诉我识别到的 skill 名称和安装路径。
+```
+
+不同 Agent 的权限设置不同。如果它不能直接安装，请使用上面的 `npx` 命令，或手动下载仓库。
+
+---
+
+## About K 学姐
+
+K 学姐是 Ex-MBB 咨询顾问，长期分享战略咨询求职、Case 训练和商业思维内容。
+
+小红书：[K 学姐](https://xhslink.com/m/4evgCZqfNRR)
+全网同名「K 学姐」，可自行搜索。
+
+---
+
+## 支持作者
+
+如果这套免费开源工具对你有帮助，也可以通过 K 学姐整理的付费资料与课程继续学习。购买不是使用本仓库的前提，仓库中的核心 Skills 仍然免费开源。
+
+<table>
+  <tr>
+    <th width="50%">咨询 Case 面试全攻略</th>
+    <th width="50%">战略咨询基本功课程</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/support/case-interview-guide-qr.png" width="220" alt="咨询 Case 面试全攻略商品二维码"></td>
+    <td align="center"><img src="assets/support/consulting-fundamentals-course-qr.png" width="220" alt="战略咨询基本功课程商品二维码"></td>
+  </tr>
+  <tr>
+    <td>面向准备咨询面试的同学，把分散的 Case 方法、常见题型和练习重点整理成一份可以反复查阅的系统攻略。</td>
+    <td>围绕战略咨询常用的结构化思考、问题拆解和表达方式，适合希望系统补齐咨询基本功、跟随课程练习的同学。</td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://xhslink.com/m/1j6S5TAIGI1"><strong>打开文档商品页</strong></a><br>微信扫码或点击链接</td>
+    <td align="center"><a href="https://xhslink.com/m/8jlzN1YYWrl"><strong>打开课程商品页</strong></a><br>微信扫码或点击链接</td>
+  </tr>
+</table>
 
 ---
 
