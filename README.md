@@ -2,11 +2,36 @@
 
 K 学姐的咨询求职 Agent Skill 工具箱。
 
-这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色还是 Case 复盘，再把任务交给对应的专业 skill。
+这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色、Market Sizing 学习还是 Case 复盘，再把任务交给对应的专业 skill。
 
 可在 Codex、Claude Code、Cursor 等支持 Agent Skills 的工具中使用。
 
 作者：K 学姐（[小红书](https://xhslink.com/m/4evgCZqfNRR)｜全网同名「K 学姐」，可自行搜索）
+
+---
+
+## 支持作者
+
+如果这套免费开源工具对你有帮助，也可以通过 K 学姐整理的付费资料与课程继续学习。购买不是使用本仓库的前提，仓库中的核心 Skills 仍然免费开源。
+
+<table>
+  <tr>
+    <th width="50%">咨询 Case 面试全攻略</th>
+    <th width="50%">战略咨询基本功课程</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="assets/support/case-interview-guide-qr.png" width="220" alt="咨询 Case 面试全攻略商品二维码"></td>
+    <td align="center"><img src="assets/support/consulting-fundamentals-course-qr.png" width="220" alt="战略咨询基本功课程商品二维码"></td>
+  </tr>
+  <tr>
+    <td>面向准备咨询面试的同学，把分散的 Case 方法、常见题型和练习重点整理成一份可以反复查阅的系统攻略。</td>
+    <td>围绕战略咨询常用的结构化思考、问题拆解和表达方式，适合希望系统补齐咨询基本功、跟随课程练习的同学。</td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://xhslink.com/m/1j6S5TAIGI1"><strong>打开文档商品页</strong></a><br>微信扫码或点击链接</td>
+    <td align="center"><a href="https://xhslink.com/m/8jlzN1YYWrl"><strong>打开课程商品页</strong></a><br>微信扫码或点击链接</td>
+  </tr>
+</table>
 
 ---
 
@@ -136,6 +161,8 @@ npx -y skills add Kxuejie/ks-consulting -g --all
 ```text
 ks-consulting/
 ├── README.md
+├── assets/
+│   └── support/              # 作者资料与课程二维码
 └── skills/
     ├── ks-consulting/
     │   └── SKILL.md
@@ -169,12 +196,8 @@ ks-consulting/
 
 ## 后续计划
 
-- 增加 K 学姐微信入口
-- 增加课程与产品介绍入口
 - 继续发布咨询面试、商业分析和求职准备相关 skills
 - 增加版本同步与发布检查，确保主仓库和各独立仓库一致
-
-微信和课程入口暂不放置，待内容与承接路径确认后再上线。
 
 ---
 
