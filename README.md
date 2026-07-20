@@ -1,12 +1,23 @@
 # KS Consulting
 
-K 学姐的咨询求职 Agent Skill 工具箱。
+## 关于这个 Skill 工具箱
+
+KS Consulting 是 K 学姐的咨询求职 Agent Skill 工具箱。
 
 这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色、Market Sizing 学习还是 Case 复盘，再把任务交给对应的专业 skill。
 
+KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成一套可以单独使用、也可以连续协作的 Agent Skills。用户不需要先研究工具，只需要说清楚自己遇到的问题。
+
 可在 Codex、Claude Code、Cursor 等支持 Agent Skills 的工具中使用。
 
-作者：K 学姐（[小红书](https://xhslink.com/m/4evgCZqfNRR)｜全网同名「K 学姐」，可自行搜索）
+---
+
+## About K 学姐
+
+K 学姐是 Ex-MBB 咨询顾问，长期分享战略咨询求职、Case 训练和商业思维内容。
+
+小红书：[K 学姐](https://xhslink.com/m/4evgCZqfNRR)
+全网同名「K 学姐」，可自行搜索。
 
 ---
 
@@ -198,14 +209,3 @@ ks-consulting/
 
 - 继续发布咨询面试、商业分析和求职准备相关 skills
 - 增加版本同步与发布检查，确保主仓库和各独立仓库一致
-
----
-
-## About K 学姐
-
-K 学姐是 Ex-MBB 咨询顾问，长期分享战略咨询求职、Case 训练和商业思维内容。
-
-KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成一套可以单独使用、也可以连续协作的 Agent Skills。用户不需要先研究工具，只需要说清楚自己遇到的问题。
-
-小红书：[K 学姐](https://xhslink.com/m/4evgCZqfNRR)  
-全网同名「K 学姐」，可自行搜索。
