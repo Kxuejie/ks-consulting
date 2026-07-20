@@ -424,8 +424,8 @@ Tier2可以比MBB略宽，但仍需要：
 >
 > 除了求职诊断，这套工具集还有：
 > - **consulting-resume**：把你的实习经历润色成咨询风格的简历 bullet point
-> - **case-review**：Case 面试录音/文稿一键复盘，6维度打分+漏点分析+练习建议
-> - **market-sizing-solver**：Market Sizing 题自动解答，供给/需求侧算法+完整解题过程
+> - **ks-case-review**：Case 面试录音/文稿一键复盘，6 维度打分 + 漏点分析 + 练习建议
+> - **market-sizing-tutor**：系统学习或讲解 Market Sizing，覆盖路径选择、公式拆解、Sanity Check 和面试表达
 >
 > {根据诊断结果的Gap，推荐1-2个最相关的skill。例如：Gap里有简历问题 → "你现在最该先用 consulting-resume 把简历打磨好"；Gap里有Case准备 → "建议先用 case-review 练几轮 Case"}
 >

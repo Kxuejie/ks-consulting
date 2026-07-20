@@ -18,7 +18,7 @@ K 学姐的咨询求职 Agent Skill 工具箱。
 npx -y skills add Kxuejie/ks-consulting -g --all
 ```
 
-这条命令会安装仓库中的 4 个 skill：1 个主入口和 3 个专业工具。
+这条命令会安装仓库中的 5 个 skill：1 个主入口和 4 个专业工具。
 
 只安装到指定 Agent：
 
@@ -52,6 +52,7 @@ https://github.com/Kxuejie/ks-consulting
 | `ks-consulting` | 不确定该用哪个工具，或完成一项后想知道下一步 | 任务路由与准备顺序 |
 | `consulting-career-planner` | 判断咨询求职胜率、主投公司层级和背景 gap | 公司定位、目标清单、4-8 周行动计划 |
 | `consulting-resume` | 把真实经历写成咨询招聘者看得懂的 bullet points | 工作链路、能力标签、2-3 个润色版本 |
+| `market-sizing-tutor` | 系统学习 Market Sizing，或讲解一道具体估算题 | 路径选择、公式树、合理区间、Sanity Check 与面试表达 |
 | `ks-case-review` | 复盘一问一答的 Case 面试文稿 | 6 维度评分、漏点、重大问题和练习方案 |
 
 ### 常见准备路径
@@ -61,10 +62,12 @@ Career Planner：先判断投哪里、缺什么
         ↓
 Consulting Resume：把真实能力写进筛选材料
         ↓
+Market Sizing Tutor：掌握高频估算题的方法与表达
+        ↓
 Case Review：用实战文稿持续复盘面试表现
 ```
 
-这不是强制顺序。已经拿到面试的人可以直接从 Case Review 开始；目标明确但简历偏弱的人可以直接进入 Consulting Resume。
+这不是强制顺序。想专项学习估算题的人可以直接进入 Market Sizing Tutor；已经有完整模拟 Case 文稿的人可以直接从 Case Review 开始；目标明确但简历偏弱的人可以直接进入 Consulting Resume。
 
 ---
 
@@ -100,6 +103,9 @@ npx -y skills add Kxuejie/ks-consulting -g -s consulting-resume -y
 # Case 面试复盘
 npx -y skills add Kxuejie/ks-consulting -g -s ks-case-review -y
 
+# Market Sizing 教学与解题
+npx -y skills add Kxuejie/ks-consulting -g -s market-sizing-tutor -y
+
 # 只安装主入口
 npx -y skills add Kxuejie/ks-consulting -g -s ks-consulting -y
 ```
@@ -108,6 +114,7 @@ npx -y skills add Kxuejie/ks-consulting -g -s ks-consulting -y
 
 - [Kxuejie-Consulting-Career-Planner](https://github.com/Kxuejie/Kxuejie-Consulting-Career-Planner)
 - [Kxuejie-Consulting-Resume](https://github.com/Kxuejie/Kxuejie-Consulting-Resume)
+- [Kxuejie-Market-Sizing-Tutor](https://github.com/Kxuejie/Kxuejie-Market-Sizing-Tutor)
 - [Kxuejie-Case-Review](https://github.com/Kxuejie/Kxuejie-Case-Review)
 
 ---
@@ -137,6 +144,10 @@ ks-consulting/
     │   └── references/
     ├── consulting-resume/
     │   ├── SKILL.md
+    │   └── references/
+    ├── market-sizing-tutor/
+    │   ├── SKILL.md
+    │   ├── agents/
     │   └── references/
     └── ks-case-review/
         ├── SKILL.md

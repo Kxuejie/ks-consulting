@@ -1,0 +1,4 @@
+interface:
+  display_name: "Market Sizing 教练"
+  short_description: "通过分层教学与完整解题掌握供给侧和需求侧 Market Sizing 方法"
+  default_prompt: "使用 $market-sizing-tutor 带我学习 Market Sizing，并从一道需求侧题开始。"
