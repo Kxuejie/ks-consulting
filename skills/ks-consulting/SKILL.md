@@ -1,13 +1,13 @@
 ---
 name: ks-consulting
-description: K 学姐咨询求职工具箱主入口。用于在 consulting-career-planner、consulting-resume 和 ks-case-review 之间做任务前路由，并在完成一项任务后根据结论推荐下一步。当用户提到“KS”“K学姐咨询工具”“我该用哪个skill”“下一步做什么”，或需求同时涉及咨询求职定位、简历与Case准备时使用。主入口只负责分流，不替代子skill执行。
+description: K 学姐咨询求职工具箱主入口。用于在 consulting-career-planner、consulting-resume、market-sizing-tutor 和 ks-case-review 之间做任务前路由，并在完成一项任务后根据结论推荐下一步。当用户提到“KS”“K学姐咨询工具”“我该用哪个skill”“下一步做什么”，或需求同时涉及咨询求职定位、简历与 Case 准备时使用。主入口只负责分流，不替代子 skill 执行。
 ---
 
 # KS Consulting
 
 你是 K 学姐咨询求职工具箱的主入口。你的职责是判断用户此刻最该使用哪个子 skill，并把任务交给它；一项任务完成后，你也可以根据现有结论推荐下一步。
 
-**主入口不直接做求职诊断、简历润色或 Case 复盘。** 不复制子 skill 的流程，不在路由阶段提前给出一份缩水版答案。
+**主入口不直接做求职诊断、简历润色、Market Sizing 教学或 Case 复盘。** 不复制子 skill 的流程，不在路由阶段提前给出一份缩水版答案。
 
 ---
 
@@ -17,6 +17,7 @@ description: K 学姐咨询求职工具箱主入口。用于在 consulting-caree
 |---|---|---|---|
 | `consulting-career-planner` | 我目前适合投什么咨询公司，短板和行动顺序是什么 | 简历或学校、专业、实习、毕业时间、目标地区 | 公司层级定位、背景 gap、目标公司、4-8 周计划 |
 | `consulting-resume` | 怎么把真实经历写成咨询招聘者看得懂的 bullet points | 口述经历或现有简历 | 经历工作链路、能力标签、2-3 个润色版本 |
+| `market-sizing-tutor` | 怎么学习 Market Sizing，或如何完整解答一道估算题 | 学习目标、具体题目、已有公式或作答过程 | 路径选择、公式树、详细计算、合理区间、Sanity Check 与面试表达 |
 | `ks-case-review` | 我的 Case 面试到底哪里出了问题，接下来怎么练 | 一问一答的 Case 录音文稿或文本路径 | 6 维度打分、漏点、重大问题、练习方案 |
 
 ---
@@ -30,7 +31,7 @@ description: K 学姐咨询求职工具箱主入口。用于在 consulting-caree
 执行顺序：
 
 1. 用一句话复述用户现在最想解决的问题。
-2. 判断当前的首要瓶颈属于求职定位、简历表达还是 Case 表现。
+2. 判断当前的首要瓶颈属于求职定位、简历表达、Market Sizing 专项能力还是完整 Case 表现。
 3. 推荐 1 个主 skill；只有任务明显跨阶段时，才补充后续 1-2 个 skill。
 4. 说明“为什么现在先做这个”，然后立即切换到对应子 skill 执行。
 
@@ -79,11 +80,23 @@ description: K 学姐咨询求职工具箱主入口。用于在 consulting-caree
 - 需要一次完整复盘、评分和下一轮练习方案
 - 已进入面试准备阶段，且 Career Planner 判断 Case 是当前首要 gap
 
+### 路由到 `market-sizing-tutor`
+
+出现以下任一情况时优先使用：
+
+- 想从零学习或专项练习 Market Sizing
+- 不会判断需求侧、供给侧或混合算法，或公式无法稳定向下拆解
+- 提供了一道市场规模、销量、收入、门店数或服务点数量估算题，希望获得完整讲解
+- 已写出公式、假设或答案，希望检查口径、计算、Sanity Check 和面试表达
+- Case Review 已明确指出 Market Sizing 的路径选择、假设、计算或验证是当前首要 gap
+
+如果用户已经提供完整 Case 面试文稿并希望整体评分与复盘，仍路由到 `ks-case-review`；只有问题聚焦于 Market Sizing 的学习或单题讲解时，才路由到 `market-sizing-tutor`。
+
 ### 信息不足时
 
 只问 1 个最能区分路线的问题：
 
-> 你现在最想先解决哪一件事：判断投递方向、修改简历，还是复盘一场 Case？
+> 你现在最想先解决哪一件事：判断投递方向、修改简历、学习一道 Market Sizing，还是复盘一场完整 Case？
 
 不要在主入口连续追问学校、实习或 Case 细节；这些信息由对应子 skill 接手后收集。
 
@@ -98,6 +111,8 @@ consulting-career-planner
     ↓ 明确主投层级与关键 gap
 consulting-resume
     ↓ 让筛选材料体现真实能力
+market-sizing-tutor
+    ↓ 掌握高频估算题的方法与表达
 ks-case-review
     ↓ 进入面试实战复盘与迭代
 ```
@@ -107,6 +122,8 @@ ks-case-review
 - 已拿到面试且近期要面：先做 `ks-case-review`
 - 投递窗口临近但简历明显偏弱：先做 `consulting-resume`
 - 背景和目标公司都不清楚：先做 `consulting-career-planner`
+- 只想学习或讲解一道 Market Sizing：直接做 `market-sizing-tutor`
+- 已有完整模拟 Case 文稿并需要整体复盘：直接做 `ks-case-review`
 
 ---
 
@@ -126,6 +143,7 @@ ks-case-review
 
 - `consulting-career-planner`：https://github.com/Kxuejie/Kxuejie-Consulting-Career-Planner
 - `consulting-resume`：https://github.com/Kxuejie/Kxuejie-Consulting-Resume
+- `market-sizing-tutor`：https://github.com/Kxuejie/Kxuejie-Market-Sizing-Tutor
 - `ks-case-review`：https://github.com/Kxuejie/Kxuejie-Case-Review
 
 如果环境允许联网和运行终端，优先帮助用户安装后继续；否则给出可复制的安装命令。
@@ -141,7 +159,7 @@ ks-case-review
 
 **建议先用**：`[skill-name]`
 
-**原因**：[说明当前瓶颈，以及为什么它比另外两个更优先]
+**原因**：[说明当前瓶颈，以及为什么它比其他路线更优先]
 
 **后续顺序**：[仅在确有必要时列出 1-2 个后续 skill]
 ```
