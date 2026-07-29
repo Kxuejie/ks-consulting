@@ -4,7 +4,7 @@
 
 KS Consulting 是 K 学姐的咨询求职 Agent Skill 工具箱。
 
-这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色、Market Sizing 学习还是 Case 复盘，再把任务交给对应的专业 skill。
+这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色、Market Sizing 学习、Case 标准答案分析还是实战复盘，再把任务交给对应的专业 skill。
 
 KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成一套可以单独使用、也可以连续协作的 Agent Skills。用户不需要先研究工具，只需要说清楚自己遇到的问题。
 
@@ -20,6 +20,7 @@ KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成
 | `consulting-career-planner` | 判断咨询求职胜率、主投公司层级和背景 gap | 公司定位、目标清单、4-8 周行动计划 |
 | `consulting-resume` | 把真实经历写成咨询招聘者看得懂的 bullet points | 工作链路、能力标签、2-3 个润色版本 |
 | `market-sizing-tutor` | 系统学习 Market Sizing，或讲解一道具体估算题 | 路径选择、公式树、合理区间、Sanity Check 与面试表达 |
+| `case-analyzer` | 根据完整 Casebook 截图、PDF 或文字材料学习一道 Case 的标准答案 | 题型识别、原框架还原、Given/Calculated/Brainstorm 标注、逐板块分析、计算、行业认知与完整 HTML 报告 |
 | `ks-case-review` | 复盘一问一答的 Case 面试文稿 | 6 维度评分、漏点、重大问题和练习方案 |
 
 ### 常见准备路径
@@ -31,10 +32,12 @@ Consulting Resume：把真实能力写进筛选材料
         ↓
 Market Sizing Tutor：掌握高频估算题的方法与表达
         ↓
+Case Analyzer：用 Casebook 标准答案学习框架与完整分析
+        ↓
 Case Review：用实战文稿持续复盘面试表现
 ```
 
-这不是强制顺序。想专项学习估算题的人可以直接进入 Market Sizing Tutor；已经有完整模拟 Case 文稿的人可以直接从 Case Review 开始；目标明确但简历偏弱的人可以直接进入 Consulting Resume。
+这不是强制顺序。想专项学习估算题的人可以直接进入 Market Sizing Tutor；拿到完整 Casebook、希望生成标准答案的人可以直接进入 Case Analyzer；已经有完整模拟 Case 文稿、希望评价本人表现的人可以直接从 Case Review 开始；目标明确但简历偏弱的人可以直接进入 Consulting Resume。
 
 ---
 
@@ -64,7 +67,7 @@ Case Review：用实战文稿持续复盘面试表现
 npx -y skills add Kxuejie/ks-consulting -g --all
 ```
 
-这条命令会安装仓库中的 5 个 skill：1 个主入口和 4 个专业工具。
+这条命令会安装仓库中的 6 个 skill：1 个主入口和 5 个专业工具。
 
 只安装到指定 Agent：
 
@@ -142,6 +145,9 @@ npx -y skills add Kxuejie/ks-consulting -g -s ks-case-review -y
 # Market Sizing 教学与解题
 npx -y skills add Kxuejie/ks-consulting -g -s market-sizing-tutor -y
 
+# Casebook 标准答案分析与 HTML 报告
+npx -y skills add Kxuejie/ks-consulting -g -s case-analyzer -y
+
 # 只安装主入口
 npx -y skills add Kxuejie/ks-consulting -g -s ks-consulting -y
 ```
@@ -151,6 +157,7 @@ npx -y skills add Kxuejie/ks-consulting -g -s ks-consulting -y
 - [Kxuejie-Consulting-Career-Planner](https://github.com/Kxuejie/Kxuejie-Consulting-Career-Planner)
 - [Kxuejie-Consulting-Resume](https://github.com/Kxuejie/Kxuejie-Consulting-Resume)
 - [Kxuejie-Market-Sizing-Tutor](https://github.com/Kxuejie/Kxuejie-Market-Sizing-Tutor)
+- [Kxuejie-Case-Analyzer](https://github.com/Kxuejie/Kxuejie-Case-Analyzer)
 - [Kxuejie-Case-Review](https://github.com/Kxuejie/Kxuejie-Case-Review)
 
 ---
@@ -164,6 +171,8 @@ npx -y skills add Kxuejie/ks-consulting -g --all
 ```
 
 主仓库中的专业 skill 是各自独立仓库正式版本的发布快照。独立仓库先更新，经过验证后再同步到这里。
+
+其中 `case-analyzer` 以独立仓库为真源；之后每次发布 Case Analyzer 新版本，必须在同一次发布中同步更新本仓库的 `skills/case-analyzer/`、主入口路由和 README，不维护两套分叉逻辑。
 
 ---
 
@@ -186,6 +195,11 @@ ks-consulting/
     ├── market-sizing-tutor/
     │   ├── SKILL.md
     │   ├── agents/
+    │   └── references/
+    ├── case-analyzer/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   ├── assets/
     │   └── references/
     └── ks-case-review/
         ├── SKILL.md

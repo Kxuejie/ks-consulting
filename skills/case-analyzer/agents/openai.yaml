@@ -1,0 +1,4 @@
+interface:
+  display_name: "Case Analyzer｜咨询 Case 标准答案"
+  short_description: "把完整 Casebook 转化为带框架覆盖、逐模块分析和行业认知的标准答案报告"
+  default_prompt: "使用 $case-analyzer 分析我上传的完整 Casebook，并先输出框架确认版。"

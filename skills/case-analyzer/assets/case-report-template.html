@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{CASE_TITLE_ZH}} {{CASE_TITLE_EN}}｜{{CASE_TYPE_ZH}} {{CASE_TYPE_EN}} Case 分析</title>
+  <style>
+    :root{
+      --bg:#eee8dc;--paper:#fbf8f1;--ink:#242433;--muted:#686778;
+      --line:#d9d1c2;--blue:#416f9f;--blue-soft:#e5edf5;--purple:#7655a8;
+      --purple-soft:#ece4f2;--green:#467964;--green-soft:#e1eee7;
+      --amber:#9a6c21;--amber-soft:#f6ead5;--red:#99524e;--red-soft:#f5e4e1;
+      --slate:#596270;--slate-soft:#e9ebee;--shadow:0 18px 50px rgba(52,44,33,.10)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",sans-serif;line-height:1.68}
+    h1,h2,h3,h4{font-family:"Noto Serif SC","Songti SC",Georgia,serif;line-height:1.22;margin:0 0 .65em}
+    p{margin:.5em 0 1em}a{color:inherit}
+    .layout{display:grid;grid-template-columns:250px minmax(0,1fr);max-width:1500px;margin:auto;min-height:100vh}
+    aside{position:sticky;top:0;height:100vh;padding:30px 22px;background:#242433;color:#f9f5ec;overflow:auto}
+    .brand{font:700 18px/1.35 Georgia,"Songti SC",serif;margin-bottom:28px}
+    .brand small{display:block;margin-top:8px;font:500 11px/1.5 sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#bcb9c9}
+    nav a{display:block;padding:8px 10px;margin:3px 0;border-radius:8px;text-decoration:none;color:#d8d5df;font-size:13px}
+    nav a:hover{background:#383748;color:white}
+    main{width:min(1180px,calc(100% - 48px));min-width:0;margin:24px auto 80px}
+    .hero,.section{background:var(--paper);border:1px solid rgba(70,63,52,.08);box-shadow:var(--shadow);border-radius:22px;margin-bottom:22px}
+    .hero{padding:clamp(32px,6vw,78px);min-height:520px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 86% 14%,rgba(118,85,168,.13),transparent 24%),radial-gradient(circle at 76% 28%,rgba(65,111,159,.14),transparent 28%),var(--paper)}
+    .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+    h1{font-size:clamp(38px,6vw,76px);max-width:900px;margin:.2em 0}
+    .hero .subtitle{font-size:clamp(17px,2vw,24px);max-width:850px;color:var(--muted)}
+    .verdict{max-width:880px;padding:20px 24px;border-left:6px solid var(--purple);background:rgba(236,228,242,.72);border-radius:4px 14px 14px 4px;font-weight:700}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .chip{border:1px solid var(--line);border-radius:999px;padding:6px 11px;background:#fffaf2;font-size:12px;font-weight:700}
+    .section{padding:clamp(26px,4vw,52px);min-width:0}
+    .section-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:24px}
+    .section-no{flex:0 0 auto;width:44px;height:44px;border-radius:13px;background:var(--ink);color:white;display:grid;place-items:center;font-weight:900}
+    .section h2{font-size:clamp(27px,3.6vw,43px);margin:0}.lede{font-size:17px;color:var(--muted);max-width:900px}
+    .grid{display:grid;gap:16px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{padding:20px;border:1px solid var(--line);border-radius:16px;background:#fffdf8;break-inside:avoid}.card h3{font-size:21px}.card ul{margin:.4em 0 0;padding-left:1.25em}.card li{margin:.35em 0}
+    .callout{padding:18px 20px;border-radius:14px;margin:18px 0;border-left:5px solid var(--blue);background:var(--blue-soft)}
+    .callout.warn{border-color:var(--red);background:var(--red-soft)}.callout.good{border-color:var(--green);background:var(--green-soft)}
+    .tag,.status{display:inline-block;font-size:11px;font-weight:900;letter-spacing:.03em;border-radius:999px;padding:5px 9px;vertical-align:middle}
+    .given{color:#275a46;background:var(--green-soft);border:1px solid #bcd5c8}.request{color:#2d5d87;background:var(--blue-soft);border:1px solid #c4d6e7}
+    .task{color:#7a5418;background:var(--amber-soft);border:1px solid #ead2aa}.sample{color:#7a4442;background:var(--red-soft);border:1px solid #e4c5c1}
+    .calc{color:#5d3f86;background:var(--purple-soft);border:1px solid #d7c6e5}.brain{color:#5d3f86;background:var(--purple-soft);border:1px solid #d7c6e5}
+    .scroll{max-width:100%;min-width:0;overflow:auto;padding-bottom:5px}
+    table{width:100%;border-collapse:separate;border-spacing:0;font-size:14px;min-width:760px}th,td{padding:13px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top;background:#fffdf8}th{background:#ebe5d9;text-align:left;font-weight:900}
+    .framework{margin:26px 0;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fffdf8;break-inside:avoid}.beam{padding:17px 22px;background:linear-gradient(90deg,#dbe9f5,#e8dff2);font:800 22px/1.25 Georgia,"Songti SC",serif}
+    .rooms{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line)}.room{padding:22px;background:#fffdf8;min-height:230px}.room h3{font-size:19px}.room .mini{font-size:13px;color:var(--muted);margin-bottom:14px}
+    .coverage-list{display:grid;gap:10px}.coverage-row{padding:12px;border-radius:12px;border:1px solid var(--line);background:#fff}.coverage-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.coverage-name{font-weight:900;font-size:13px}.coverage-row p{font-size:12px;margin:7px 0 0;color:var(--muted)}
+    .coverage-row.given-row{border-left:4px solid var(--green)}.coverage-row.partial-row{border-left:4px solid var(--amber)}.coverage-row.missing-row{border-left:4px solid var(--red)}.coverage-row.na-row{border-left:4px solid var(--slate)}
+    .status.given-status{color:#275a46;background:var(--green-soft)}.status.partial-status{color:#7a5418;background:var(--amber-soft)}.status.missing-status{color:#7a4442;background:var(--red-soft)}.status.na-status{color:#4f5865;background:var(--slate-soft)}
+    .stage-conclusion{padding:20px 22px;margin:22px 0 0;border-radius:14px;border:1px solid #d7c6e5;border-left:6px solid var(--purple);background:linear-gradient(90deg,var(--purple-soft),#f7f2fa)}.stage-conclusion strong{display:block;font-family:Georgia,"Songti SC",serif;font-size:17px}.stage-conclusion p{margin:.55em 0 0}
+    .formula{font-family:Consolas,"Courier New",monospace;background:#282737;color:#fff;border-radius:14px;padding:17px 19px;overflow:auto;margin:14px 0;white-space:pre-wrap}
+    .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;align-items:stretch;margin:20px 0}.flow-step{position:relative;padding:17px;border-radius:14px;background:#fffdf8;border:1px solid var(--line)}.flow-step:not(:last-child)::after{content:"→";position:absolute;right:-13px;top:42%;z-index:2;color:var(--purple);font-weight:900}
+    .toolbar{position:fixed;right:22px;bottom:22px;z-index:10;display:flex;gap:8px}.btn{border:0;border-radius:999px;background:#242433;color:white;padding:11px 16px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.18);font-weight:800}
+    .muted{color:var(--muted)}.small{font-size:13px}
+    @media(max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}aside{display:none}main{width:calc(100% - 24px);max-width:900px;min-width:0}.section,.hero{min-width:0}.grid.three,.grid.four{grid-template-columns:repeat(2,minmax(0,1fr))}.rooms{grid-template-columns:1fr!important}.flow{grid-template-columns:1fr}.flow-step:not(:last-child)::after{content:"↓";right:auto;left:48%;top:auto;bottom:-18px}}
+    @media(max-width:650px){.grid.two,.grid.three,.grid.four{grid-template-columns:1fr}.hero,.section{border-radius:15px}.section{padding:24px 18px}.toolbar{right:12px;bottom:12px}.btn{padding:9px 12px;font-size:12px}.coverage-top{display:block}.status{margin-top:6px}}
+    @media print{body{background:white;font-size:10.5pt}.layout{display:block}.toolbar,aside{display:none!important}main{width:100%;margin:0}.hero,.section{box-shadow:none;border:0;border-radius:0;margin:0 0 8mm;padding:10mm}.hero{min-height:auto}.card,.framework,.room,.callout,.stage-conclusion,tr{break-inside:avoid}.section{page-break-before:auto}a{text-decoration:none}}
+  </style>
+</head>
+<body>
+  <!-- Replace all {{PLACEHOLDERS}}. Duplicate/remove nav links and sections as the Case requires. -->
+  <div class="layout">
+    <aside>
+      <div class="brand">{{CASE_TITLE_ZH}}<small>{{CASE_TITLE_EN}} · {{CASE_TYPE_EN}}</small></div>
+      <nav>
+        <a href="#top">封面与结论｜Overview</a>
+        <a href="#source-audit">资料来源审计｜Source Audit</a>
+        <a href="#framework">框架覆盖｜Framework</a>
+        <a href="#recommendation">最终建议｜Recommendation</a>
+      </nav>
+    </aside>
+    <main id="top">
+      <header class="hero">
+        <div>
+          <div class="eyebrow">CASE ANALYZER · {{GENERATED_DATE}}</div>
+          <h1>{{CASE_TITLE_ZH}} · {{CASE_TITLE_EN}}</h1>
+          <div class="subtitle">{{CASE_QUESTION_ZH}}<br><span class="small">{{CASE_QUESTION_EN}}</span></div>
+          <div class="chips"><span class="chip">{{CASE_TYPE_ZH}}｜{{CASE_TYPE_EN}}</span><span class="chip">{{SOURCE}}</span></div>
+        </div>
+        <div class="verdict">一句话判断｜Executive Takeaway：{{ONE_LINE_VERDICT}}</div>
+      </header>
+
+      <section class="section" id="source-audit">
+        <div class="section-head"><div class="section-no">01</div><div><h2>资料来源审计｜Source Audit</h2><p class="lede">{{SOURCE_AUDIT_LEDE}}</p></div></div>
+        <span class="tag given">候选人已知｜Candidate Given</span>
+        <span class="tag request">按需提供｜Upon Request</span>
+        <span class="tag task">候选人任务｜Candidate Task</span>
+        <span class="tag sample">Casebook 示例答案｜Casebook Sample Answer</span>
+        <span class="tag calc">分析器计算｜Analyst Calculation</span>
+        <span class="tag brain">观点与假设｜Point of View &amp; Hypothesis</span>
+        <div class="scroll">{{SOURCE_AUDIT_TABLE}}</div>
+      </section>
+
+      <section class="section" id="framework">
+        <div class="section-head"><div class="section-no">02</div><div><h2>框架覆盖｜Framework Coverage</h2><p class="lede">{{FRAMEWORK_LEDE}}</p></div></div>
+        <div class="framework">
+          <div class="beam">{{FRAMEWORK_MODULE_ZH}}｜{{FRAMEWORK_MODULE_EN}}</div>
+          <div class="rooms">
+            <article class="room">
+              <h3>{{SUBMODULE_ZH}}｜{{SUBMODULE_EN}}</h3>
+              <div class="coverage-list">
+                <div class="coverage-row given-row">
+                  <div class="coverage-top"><div class="coverage-name">{{NODE_GIVEN_ZH}}｜{{NODE_GIVEN_EN}}</div><span class="status given-status">已给｜Given</span></div>
+                  <p><strong>已有｜Evidence：</strong>{{EVIDENCE}}</p>
+                </div>
+                <div class="coverage-row partial-row">
+                  <div class="coverage-top"><div class="coverage-name">{{NODE_PARTIAL_ZH}}｜{{NODE_PARTIAL_EN}}</div><span class="status partial-status">部分已给｜Partial</span></div>
+                  <p><strong>已有｜Evidence：</strong>{{PARTIAL_EVIDENCE}}</p><p><strong>观点与假设｜Point of View &amp; Hypothesis：</strong>{{PARTIAL_HYPOTHESIS}}</p>
+                </div>
+                <div class="coverage-row missing-row">
+                  <div class="coverage-top"><div class="coverage-name">{{NODE_MISSING_ZH}}｜{{NODE_MISSING_EN}}</div><span class="status missing-status">未给｜Missing</span></div>
+                  <p><strong>观点与假设｜Point of View &amp; Hypothesis：</strong>{{MISSING_HYPOTHESIS}}</p>
+                </div>
+              </div>
+            </article>
+            {{MORE_FRAMEWORK_ROOMS}}
+          </div>
+        </div>
+        <div class="stage-conclusion"><strong>阶段性判断｜Stage Conclusion</strong><p>{{MODULE_STAGE_CONCLUSION}}</p></div>
+      </section>
+
+      {{MODULE_ANALYSIS_SECTIONS}}
+
+      <section class="section" id="recommendation">
+        <div class="section-head"><div class="section-no">{{FINAL_NO}}</div><div><h2>最终建议｜Recommendation</h2><p class="lede">{{RECOMMENDATION_LEDE}}</p></div></div>
+        <div class="callout good"><strong>{{FINAL_RECOMMENDATION}}</strong></div>
+        {{RECOMMENDATION_SUPPORT}}
+        <div class="grid two" style="margin-top:16px">
+          <article class="card"><h3>核心风险｜Key Risks</h3>{{FINAL_RISKS}}</article>
+          <article class="card"><h3>下一步｜Next Steps</h3>{{FINAL_NEXT_STEPS}}</article>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div class="toolbar"><button class="btn" onclick="window.print()">打印 / 存为 PDF｜Print</button><button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">回到顶部｜Top</button></div>
+</body>
+</html>
