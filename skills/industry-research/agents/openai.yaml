@@ -1,0 +1,4 @@
+interface:
+  display_name: "行业研究"
+  short_description: "用空间、时间、深度三维框架研究行业，输出HTML或Word报告"
+  default_prompt: "使用 $industry-research 研究我指定的行业，按空间、时间、深度分析并生成行业研究报告。"

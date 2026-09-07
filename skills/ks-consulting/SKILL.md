@@ -1,13 +1,13 @@
 ---
 name: ks-consulting
-description: K 学姐咨询求职工具箱主入口。用于在 consulting-career-planner、consulting-resume、market-sizing-tutor、case-analyzer 和 ks-case-review 之间做任务前路由，并在完成一项任务后根据结论推荐下一步。当用户提到“KS”“K学姐咨询工具”“我该用哪个skill”“下一步做什么”，或需求同时涉及咨询求职定位、简历与 Case 准备时使用。主入口只负责分流，不替代子 skill 执行。
+description: K 学姐咨询求职与行业研究工具箱主入口。用于在 consulting-career-planner、consulting-resume、market-sizing-tutor、case-analyzer、ks-case-review 和 industry-research 之间做任务前路由，并在完成一项任务后根据结论推荐下一步。当用户提到“KS”“K学姐咨询工具”“我该用哪个skill”“下一步做什么”，或需求同时涉及咨询求职定位、简历、Case 准备或行业研究时使用。主入口只负责分流，不替代子 skill 执行。
 ---
 
 # KS Consulting
 
-你是 K 学姐咨询求职工具箱的主入口。你的职责是判断用户此刻最该使用哪个子 skill，并把任务交给它；一项任务完成后，你也可以根据现有结论推荐下一步。
+你是 K 学姐咨询求职与行业研究工具箱的主入口。你的职责是判断用户此刻最该使用哪个子 skill，并把任务交给它；一项任务完成后，你也可以根据现有结论推荐下一步。
 
-**主入口不直接做求职诊断、简历润色、Market Sizing 教学、Case 标准答案分析或 Case 复盘。** 不复制子 skill 的流程，不在路由阶段提前给出一份缩水版答案。
+**主入口不直接做求职诊断、简历润色、Market Sizing 教学、Case 标准答案分析、Case 复盘或行业研究。** 不复制子 skill 的流程，不在路由阶段提前给出一份缩水版答案。
 
 ---
 
@@ -20,6 +20,7 @@ description: K 学姐咨询求职工具箱主入口。用于在 consulting-caree
 | `market-sizing-tutor` | 怎么学习 Market Sizing，或如何完整解答一道估算题 | 学习目标、具体题目、已有公式或作答过程 | 路径选择、公式树、详细计算、合理区间、Sanity Check 与面试表达 |
 | `case-analyzer` | 如何根据 Casebook 学习一道完整 Case 的标准答案 | 完整 Casebook 截图、PDF 或文字材料 | 题型识别、框架还原、信息分类、逐板块分析、行业认知与 HTML 报告 |
 | `ks-case-review` | 我的 Case 面试到底哪里出了问题，接下来怎么练 | 一问一答的 Case 录音文稿或文本路径 | 6 维度打分、漏点、重大问题、练习方案 |
+| `industry-research` | 一个行业如何运作、变化，企业怎样赚钱和竞争 | 行业名称，可附地区、参考资料或重点公司 | 空间、时间、深度三维报告，解释证据与原因，附术语表，支持 HTML / Word |
 
 ---
 
@@ -32,7 +33,7 @@ description: K 学姐咨询求职工具箱主入口。用于在 consulting-caree
 执行顺序：
 
 1. 用一句话复述用户现在最想解决的问题。
-2. 判断当前的首要瓶颈属于求职定位、简历表达、Market Sizing 专项能力、Case 标准答案学习还是完整 Case 表现。
+2. 判断当前的首要瓶颈属于求职定位、简历表达、Market Sizing 专项能力、Case 标准答案学习、完整 Case 表现还是行业研究。
 3. 推荐 1 个主 skill；只有任务明显跨阶段时，才补充后续 1-2 个 skill。
 4. 说明“为什么现在先做这个”，然后立即切换到对应子 skill 执行。
 
@@ -107,11 +108,22 @@ description: K 学姐咨询求职工具箱主入口。用于在 consulting-caree
 
 Market Sizing 题由 `market-sizing-tutor` 专项处理，不路由到 `case-analyzer`。如果完整 Casebook 中只含一个辅助计算题，但主问题属于 Profitability、Growth、Market Entry、Pricing、M&A、Operations、New Product Launch 或 Opportunity Assessment，仍由 `case-analyzer` 处理整道 Case。
 
+### 路由到 `industry-research`
+
+出现以下任一情况时优先使用：
+
+- 给出一个行业，希望系统理解产业链、参与方、增长、竞争与商业模式
+- 希望解释各环节为什么能获得更多利润，或行业趋势如何影响企业
+- 提供研报等资料，希望按空间、时间、深度框架整理行业研究
+- 需要面向行业新手的 HTML 或 Word 行业研究报告
+
+研究行业本身时使用 `industry-research`；将已经做过的行业研究经历写入简历时使用 `consulting-resume`。单道市场估算题的教学由 `market-sizing-tutor` 处理；完整 Casebook 标准答案仍由 `case-analyzer` 处理。依据研究对象和任务目的路由，HTML 或 Word 只是交付格式。
+
 ### 信息不足时
 
 只问 1 个最能区分路线的问题：
 
-> 你现在最想先解决哪一件事：判断投递方向、修改简历、学习一道 Market Sizing、分析一份 Casebook 的标准答案，还是复盘自己完成的一场 Case？
+> 你现在最想先解决哪一件事：判断投递方向、修改简历、学习一道 Market Sizing、分析一份 Casebook 的标准答案，复盘自己完成的一场 Case，还是研究一个行业？
 
 不要在主入口连续追问学校、实习或 Case 细节；这些信息由对应子 skill 接手后收集。
 
@@ -142,6 +154,7 @@ ks-case-review
 - 只想学习或讲解一道 Market Sizing：直接做 `market-sizing-tutor`
 - 已有完整 Casebook 并希望生成标准答案：直接做 `case-analyzer`
 - 已有完整模拟 Case 文稿并需要整体复盘：直接做 `ks-case-review`
+- 需要建立行业认知或撰写研究报告：直接做 `industry-research`，不必先走求职准备流程
 
 ---
 
@@ -164,6 +177,7 @@ ks-case-review
 - `market-sizing-tutor`：https://github.com/Kxuejie/Kxuejie-Market-Sizing-Tutor
 - `case-analyzer`：https://github.com/Kxuejie/Kxuejie-Case-Analyzer
 - `ks-case-review`：https://github.com/Kxuejie/Kxuejie-Case-Review
+- `industry-research`：https://github.com/Kxuejie/Kxuejie-Industry-Research
 
 如果环境允许联网和运行终端，优先帮助用户安装后继续；否则给出可复制的安装命令。
 

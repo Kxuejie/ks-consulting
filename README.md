@@ -1,14 +1,23 @@
 # KS Consulting
 
-## 关于这个 Skill 工具箱
+## 这个 Skill 能做什么
 
-KS Consulting 是 K 学姐的咨询求职 Agent Skill 工具箱。
+KS Consulting 是 K 学姐的咨询求职与行业研究 Agent Skill 工具箱。
 
-这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色、Market Sizing 学习、Case 标准答案分析还是实战复盘，再把任务交给对应的专业 skill。
+这个仓库既是整套 skill 的一键安装入口，也是咨询求职任务的导航中枢。用户只需要记住 `ks-consulting`：它会判断你现在更该先做求职定位、简历润色、Market Sizing 学习、Case 标准答案分析、实战复盘还是行业研究，再把任务交给对应的专业 skill。
 
 KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成一套可以单独使用、也可以连续协作的 Agent Skills。用户不需要先研究工具，只需要说清楚自己遇到的问题。
 
 可在 Codex、Claude Code、Cursor 等支持 Agent Skills 的工具中使用。
+
+---
+
+## 关于 K 学姐
+
+K 学姐是 Ex-MBB 咨询顾问，长期分享战略咨询求职、Case 训练和商业思维内容。
+
+小红书：[K 学姐](https://xhslink.com/m/4evgCZqfNRR)
+全网同名「K 学姐」，可自行搜索。
 
 ---
 
@@ -22,6 +31,7 @@ KS Consulting 的目标，是把咨询求职中不同阶段的判断方法做成
 | `market-sizing-tutor` | 系统学习 Market Sizing，或讲解一道具体估算题 | 路径选择、公式树、合理区间、Sanity Check 与面试表达 |
 | `case-analyzer` | 根据完整 Casebook 截图、PDF 或文字材料学习一道 Case 的标准答案 | 题型识别、原框架还原、Given/Calculated/Brainstorm 标注、逐板块分析、计算、行业认知与完整 HTML 报告 |
 | `ks-case-review` | 复盘一问一答的 Case 面试文稿 | 6 维度评分、漏点、重大问题和练习方案 |
+| `industry-research` | 研究一个行业、理解行业变化与盈利机制 | 空间、时间、深度三维分析，解释判断依据与原因，附术语表，输出 HTML 或 Word 报告 |
 
 ### 常见准备路径
 
@@ -36,6 +46,8 @@ Case Analyzer：用 Casebook 标准答案学习框架与完整分析
         ↓
 Case Review：用实战文稿持续复盘面试表现
 ```
+
+需要行业认知或研究报告的人，可以直接使用 Industry Research。
 
 这不是强制顺序。想专项学习估算题的人可以直接进入 Market Sizing Tutor；拿到完整 Casebook、希望生成标准答案的人可以直接进入 Case Analyzer；已经有完整模拟 Case 文稿、希望评价本人表现的人可以直接从 Case Review 开始；目标明确但简历偏弱的人可以直接进入 Consulting Resume。
 
@@ -67,7 +79,7 @@ Case Review：用实战文稿持续复盘面试表现
 npx -y skills add Kxuejie/ks-consulting -g --all
 ```
 
-这条命令会安装仓库中的 6 个 skill：1 个主入口和 5 个专业工具。
+这条命令会安装仓库中的 7 个 skill：1 个主入口和 6 个专业工具。
 
 只安装到指定 Agent：
 
@@ -91,15 +103,6 @@ https://github.com/Kxuejie/ks-consulting
 ```
 
 不同 Agent 的权限设置不同。如果它不能直接安装，请使用上面的 `npx` 命令，或手动下载仓库。
-
----
-
-## About K 学姐
-
-K 学姐是 Ex-MBB 咨询顾问，长期分享战略咨询求职、Case 训练和商业思维内容。
-
-小红书：[K 学姐](https://xhslink.com/m/4evgCZqfNRR)
-全网同名「K 学姐」，可自行搜索。
 
 ---
 
@@ -148,6 +151,9 @@ npx -y skills add Kxuejie/ks-consulting -g -s market-sizing-tutor -y
 # Casebook 标准答案分析与 HTML 报告
 npx -y skills add Kxuejie/ks-consulting -g -s case-analyzer -y
 
+# 行业研究与 HTML / Word 报告
+npx -y skills add Kxuejie/ks-consulting -g -s industry-research -y
+
 # 只安装主入口
 npx -y skills add Kxuejie/ks-consulting -g -s ks-consulting -y
 ```
@@ -159,6 +165,7 @@ npx -y skills add Kxuejie/ks-consulting -g -s ks-consulting -y
 - [Kxuejie-Market-Sizing-Tutor](https://github.com/Kxuejie/Kxuejie-Market-Sizing-Tutor)
 - [Kxuejie-Case-Analyzer](https://github.com/Kxuejie/Kxuejie-Case-Analyzer)
 - [Kxuejie-Case-Review](https://github.com/Kxuejie/Kxuejie-Case-Review)
+- [Kxuejie-Industry-Research](https://github.com/Kxuejie/Kxuejie-Industry-Research)
 
 ---
 
@@ -175,6 +182,8 @@ npx -y skills add Kxuejie/ks-consulting -g --all
 其中 `case-analyzer` 以独立仓库为真源；之后每次发布 Case Analyzer 新版本，必须在同一次发布中同步更新本仓库的 `skills/case-analyzer/`、主入口路由和 README，不维护两套分叉逻辑。
 
 ---
+
+`industry-research` 同样以独立仓库为发布真源；每次更新同步本仓库的 `skills/industry-research/`，并核对主入口路由和 README。
 
 ## 项目结构
 
@@ -201,6 +210,13 @@ ks-consulting/
     │   ├── agents/
     │   ├── assets/
     │   └── references/
+    ├── industry-research/
+    │   ├── SKILL.md
+    │   ├── agents/
+    │   ├── references/
+    │   ├── assets/
+    │   ├── scripts/
+    │   └── requirements.txt
     └── ks-case-review/
         ├── SKILL.md
         └── reference/
