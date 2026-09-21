@@ -158,7 +158,7 @@ description: 战略咨询 Case Interview 标准答案生成器。用于用户上
 特殊情况：
 
 - **纯 Market Sizing 题**：交给独立的 Market Sizing Tutor，不把 Case Analyzer 扩展成第二套 Market Sizing 工具。若综合 Case 只包含一道市场规模计算，则在已选主框架的对应节点内完成计算，不额外加载 Market Sizing 框架。
-- **Profitability**：优先使用 Profitability 附件内置的 Revenue Growth / Cost Reduction 逻辑。不要再拼接一整套 Growth Strategy。
+- **Profitability**：优先使用 Profitability 附件内置的 Revenue Growth / Cost Reduction 逻辑。确认框架后，先依附件的“开题信息与无趋势判断”形成收入／成本优先级，再用后续题目和数据更新；开题判断不得借用后续计算方向。不要再拼接一整套 Growth Strategy。
 - **A/B 选择或做/不做**：当问题明确要求比较机会 A 与 B，或判断是否做某个机会时，使用 Opportunity Assessment。
 - **框架内引用其他方法**：只使用主框架明确需要的 mini 版本，不把多个完整框架合并成新的框架。
 - **仍然模糊**：只有在无法确定主问题时，才集中向用户确认一次。
@@ -417,6 +417,7 @@ mindmap
 - [ ] 缺失 Exhibit / Appendix 没有通过答案反推伪装成题目材料
 - [ ] 每个保留的框架子节点都有 Given / Partial / Missing / N/A 覆盖状态
 - [ ] 每个关键 Partial / Missing 节点都有明确的 base-case 观点假设，而不是只列待问问题
+- [ ] Profitability 的初始优先级仅依据开题与当时可获得的信息；缺少趋势时已比较收入／成本的改善空间、约束与推翻条件，后续任务方向没有被倒用为开题依据
 - [ ] 每个重要观点都包含立场、因果、brainstorm 佐证和同段不确定性
 - [ ] 每条关键 Given 都已转化为推动核心问题的 implication
 - [ ] Casebook 计算已复核，并给出 implication
